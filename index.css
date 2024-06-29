@@ -126,22 +126,22 @@ img {
   }
 
   .technology {
-    grid-column: 1 / -1;
+    grid-column: 1 / 6;
   }
 
   .environment {
-    grid-column: 1 / 6;
+    grid-column: 6 / 9;
   }
 
   .nasa {
-    grid-column: 6 / -1;
+    grid-column: 9 / -1;
   }
 
   .physics {
-    grid-column: 1 / 6;
+    grid-column: 1 / 3;
   }
 
   .health {
-    grid-column: 1 / -1;
+    grid-column: 3 / 9;
   }
 }
