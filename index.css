@@ -5,43 +5,101 @@ body {
   padding: 0;
 }
 
+/* =================
+    Site Layout 
+   ================= */
+/* 
+Challenge:
+    1. Get the header, main, and footer 
+       into a vertical column. 
+    2. Put an em of space between them 
+       vertically.
+    3. Put an em of space above the header, 
+       below the footer, and to the left and 
+       right of all three elements.  
+    🤔 Have you learned any good techniques 
+       for creating empty rows/columns in a grid?
+    ⚠️ You do NOT need to use the 'margin' 
+       property to complete this challenge.
+    🛟 hint.md for help!
+ */
+
 body {
-  margin: 1em;
+  display: grid;
+  gap: 1em;
+  grid-template-areas:
+    ". . ."
+    ". head ."
+    ". main ."
+    ". foot ."
+    ". . .";
+  grid-template-columns: 1fr;
+}
+
+.site-header {
+  grid-area: head;
+}
+
+footer {
+  grid-area: foot;
 }
 
 /* =================
-    Layout
+    Main Element Layout 
    ================= */
 
 main {
   display: grid;
   gap: 1em;
+  grid-area: main;
+  grid-template-areas:
+    "tech"
+    "envi"
+    "nasa"
+    "phys"
+    "heal";
   grid-template-columns: 1fr;
 }
 
 @media (min-width: 500px) {
-  /*
-Challenge:
-    1. Make our layout look like the screenshot. 
-    (📝 Try to write the least CSS possible.)  
-*/
   main {
-    display: grid;
-    grid-template: repeat(4, 1fr) / repeat(2, 1fr);
+    grid-template-areas:
+      "tech tech"
+      "envi nasa"
+      "phys nasa"
+      "heal heal";
+    grid-template-columns: 1fr 1fr;
   }
-  .technology {
-    grid-column: span 2;
+}
+
+@media (min-width: 870px) {
+  main {
+    grid-template-areas:
+      "tech tech tech tech tech tech envi envi envi nasa nasa nasa"
+      "phys phys phys heal heal heal heal heal heal nasa nasa nasa";
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat(9, 1fr) repeat(3, minmax(70px, 1fr));
   }
-  .environment {
-  }
-  .nasa {
-    grid-row: span 2;
-  }
-  .physics {
-  }
-  .health {
-    grid-column: span 2;
-  }
+}
+
+.technology {
+  grid-area: tech;
+}
+
+.environment {
+  grid-area: envi;
+}
+
+.nasa {
+  grid-area: nasa;
+}
+
+.physics {
+  grid-area: phys;
+}
+
+.health {
+  grid-area: heal;
 }
 
 /* =================
@@ -117,31 +175,4 @@ img {
   border-top-left-radius: 0.2em;
   border-top-right-radius: 0.2em;
   width: 100%;
-}
-
-@media (min-width: 870px) {
-  main {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-  }
-
-  .technology {
-    grid-column: 1 / 6;
-  }
-
-  .environment {
-    grid-column: 6 / 9;
-  }
-
-  .nasa {
-    grid-column: 9 / -1;
-  }
-
-  .physics {
-    grid-column: 1 / 3;
-  }
-
-  .health {
-    grid-column: 3 / 9;
-  }
 }
